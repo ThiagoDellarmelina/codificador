@@ -28,6 +28,10 @@
           alert("Os textos 1 e 2 devem ter caracteres distintos");
           return;
         }
+        if (input1.length !== input2.length) {
+          alert("Os textos 1 e 2 precisam ter a mesma quantidade de caracteres");
+          return;
+        }
         let resultado = "";
         for (let i = 0; i < input3.length; i++) {
           const indice = input1.indexOf(input3[i]);
@@ -49,6 +53,10 @@
         }
         if (new Set(input1).size !== input1.length || new Set(input2).size !== input2.length) {
           alert("Os textos 1 e 2 devem ter caracteres distintos");
+          return;
+        }
+        if (input1.length !== input2.length) {
+          alert("Os textos 1 e 2 precisam ter a mesma quantidade de caracteres");
           return;
         }
         let resultado = "";

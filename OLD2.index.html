@@ -1,0 +1,153 @@
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>Codificador/Decodificador</title>
+  </head>
+  <body>
+    <label for="input1">Texto 1:</label>
+    <input type="text" id="input1" />
+
+    <label for="input2">Texto 2:</label>
+    <input type="text" id="input2" />
+
+    <label for="input3">Texto 3:</label>
+    <input type="text" id="input3" />
+
+    <button onclick="codificar()">Codificar</button>
+    <button onclick="decodificar()">Decodificar</button>
+
+    <br />
+    <br />
+
+    <label for="output">Resultado:</label>
+    <input type="text" id="output" disabled />
+
+    <script>
+      function codificar() {
+        const input1 = document.getElementById("input1").value;
+        const input2 = document.getElementById("input2").value;
+        const input3 = document.getElementById("input3").value;
+        let output = "";
+
+        // Verifica se os inputs 1 e 2 possuem mais de 4 caracteres
+        if (input1.length <= 4 || input2.length <= 4) {
+          alert("Os textos 1 e 2 precisam ter mais de 4 caracteres");
+          return;
+        }
+
+        // Verifica se todos os caracteres de input1 e input2 são diferentes
+        if (new Set(input1).size !== input1.length || new Set(input2).size !== input2.length) {
+          alert("Os caracteres dos textos 1 e 2 precisam ser todos diferentes");
+          return;
+        }
+
+        // Verifica se input1 e input2 possuem a mesma quantidade de caracteres
+        if (input1.length !== input2.length) {
+          alert("Os textos 1 e 2 precisam ter a mesma quantidade de caracteres");
+          return;
+        }
+
+        // Verifica se o primeiro caractere de input3 está presente em input1
+        for (let i = 0; i < input1.length; i++) {
+          if (input3.charAt(0) === input1.charAt(i)) {
+            output += input2.charAt(i);
+          } else {
+            output += input3.charAt(0);
+          }
+        }
+
+        document.getElementById("output").value = output;
+      }
+
+      function decodificar() {
+        const input1 = document.getElementById("input1").value;
+        const input2 = document.getElementById("input2").value;
+        const input3 = document.getElementById("input3").value;
+        output = "";
+
+        // Verifica se os inputs 1 e 2 possuem mais de 4 caracteres
+        if (input1.length <= 4 || input2.length <= 4) {
+          alert("Os textos 1 e 2 precisam ter mais de 4 caracteres");
+          return;
+        }
+
+        // Verifica se todos os caracteres de input1 e input2 são diferentes
+        if (new Set(input1).size !== input1.length || new Set(input2).size !== input2.length) {
+          alert("Os caracteres dos textos 1 e 2 precisam ser todos diferentes");
+          return;
+        }
+
+        // Verifica se input1 e input2 possuem a mesma quantidade de caracteres
+        if (input1.length !== input2.length) {
+          alert("Os textos 1 e 2 precisam ter a mesma quantidade de caracteres");
+         
+         return;
+    }
+
+    // Verificar se o primeiro item do input3 corresponde a algum item do input1
+    let input3Array = input3.split("");
+    let outputArray = [];
+
+    for (let i = 0; i < input3Array.length; i++) {
+      if (input1.includes(input3Array[i])) {
+        let index = input1.indexOf(input3Array[i]);
+        outputArray.push(input2[index]);
+      } else {
+        outputArray.push(input3Array[i]);
+      }
+    }
+
+    let output = outputArray.join("");
+
+    // Exibir resultado
+    document.getElementById("output").value = output;
+  }
+
+  function decode() {
+    let input1 = document.getElementById("input1").value;
+    let input2 = document.getElementById("input2").value;
+    let input3 = document.getElementById("input3").value;
+
+    // Verificar se os inputs têm mais de 4 caracteres
+    if (input1.length < 5 || input2.length < 5) {
+      alert("Os textos 1 e 2 precisam ter mais de 4 caracteres.");
+
+      return;
+    }
+
+    // Verificar se todos os caracteres dos inputs são diferentes
+    let input1Set = new Set(input1.split(""));
+    let input2Set = new Set(input2.split(""));
+
+    if (input1Set.size !== input1.length || input2Set.size !== input2.length) {
+      alert("Os textos 1 e 2 precisam ter todos os caracteres diferentes.");
+
+      return;
+    }
+
+    // Verificar se os inputs têm a mesma quantidade de caracteres
+    if (input1.length !== input2.length) {
+      alert("Os textos 1 e 2 precisam ter a mesma quantidade de caracteres.");
+
+      return;
+    }
+
+    // Verificar se o primeiro item do input3 corresponde a algum item do input2
+    let input3Array = input3.split("");
+    let outputArray = [];
+
+    for (let i = 0; i < input3Array.length; i++) {
+      if (input2.includes(input3Array[i])) {
+        let index = input2.indexOf(input3Array[i]);
+        outputArray.push(input1[index]);
+      } else {
+        outputArray.push(input3Array[i]);
+      }
+    }
+
+    let output = outputArray.join("");
+
+    // Exibir resultado
+    document.getElementById("output").value = output;
+  }
+</script>
